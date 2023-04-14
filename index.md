@@ -31,7 +31,7 @@ double quotation marks around the value, unless specified otherwise.
 And run 'make workshop-check' *before* committing to make sure that changes are good.
 {% endcomment %}
 
-<h4>Wageningen University & Research are pleased to invite you to <strong>{{page.title}}</strong>.</h4>
+<h4>Wageningen University & Research are pleased to invite you to <strong>{{site.title}}</strong>.</h4>
 
 <h2 id="general">General Information</h2>
 
@@ -69,7 +69,7 @@ In this two day workshop you will learn about two most common long read sequenci
   Modify the block below if there are any special requirements.
 {% endcomment %}
 <p id="requirements">
-  <strong>Requirements:</strong> It is <b>necessary to bring a laptop</b>.  A VMWare-based virtual machine with all data and tools will be provided. Basic knowledge of bioinformatics and genomics is a prerequisite. Participants will work in a Linux environment. Please check the Setup section to see which tools you need to install when using your own laptop.
+  <strong>Requirements:</strong> It is <b>necessary to bring a laptop</b>.  A VMWare-based virtual machine with all data and tools will be provided. Basic knowledge of bioinformatics and genomics is a prerequisite. Participants will work in a Linux environment. Please check the <a href="{{site.workshop_site}}02-setup">Setup section</a> to see which tools you need to install when using your own laptop.
 </p>
 
 
@@ -129,5 +129,4 @@ please preview your site before committing, and make sure to run
 'tools/check' as well.
 {% endcomment %}
 
-<h2 id="setup">Setup</h2>
 
