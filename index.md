@@ -31,7 +31,7 @@ double quotation marks around the value, unless specified otherwise.
 And run 'make workshop-check' *before* committing to make sure that changes are good.
 {% endcomment %}
 
-<h4>Wageningen University & Research are pleased to invite you to <strong>{{site.title}}</strong>.</h4>
+<h4>Wageningen University & Research are pleased to invite you to the <strong>{{site.title}}</strong>.</h4>
 
 <h2 id="general">General Information</h2>
 
