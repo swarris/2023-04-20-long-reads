@@ -4,60 +4,54 @@ teaching: 10
 exercises: 10
 questions: 
 objectives:
-- "To have the Ubuntu VM running in VirtualBox, or"
+- "To have the Ubuntu VM running in VMWare Player, or"
 - "To know which tools to used and where to find the data for local installation"
 keypoints:
 - "VM can be used after the workshop"
 - "Installing required packages on own machine may require root privileges."
 apps:
-- "[VirtualBox](https://www.virtualbox.org/wiki/Downloads)"
-- "[The Ubuntu image](mailto:a.s.czech@genetwister.nl)"
+- "[VMWare player](https://www.vmware.com/nl/products/workstation-player.html)"
+- "[The Ubuntu image](https://www.dropbox.com)"
 ---
 
-For the workshop we use Ubuntu Linux as the main Operating System. We have created a VirtualBox image, including all the necessary tools and data. You are of course welcome to use your own Linux-based system.
+For the workshop we use Ubuntu Linux as the main Operating System. We have created a virtual machine, including all the necessary tools and data. You are of course welcome to use your own Linux-based system.
 
-## Installing the VirtualBox image
+## Installing the VMware image
 
-VirtualBox is a virtualization tool from VMWare and is [freely available](https://www.virtualbox.org/wiki/Downloads). The Windows systems in use for this workshop at Wageningen UR already have it installed.
+The VMWare workstation 16 player from VMWare runs the virtual machine. It is available through the WUR Software center and is also [freely available](https://www.vmware.com/nl/products/workstation-player.html). 
 
-The ubuntu image can be obtained upon a request. Send email to [Andrzej S. Czech](mailto:a.s.czech@genetwister.nl) for a download link. Please, download the image and store it on a local hard drive. A network location usually does not work, so it is better to store it locally.
+The ubuntu image can be downloaded from dropbox. Please, download the zip-file and unzip it to a local hard drive. A network location usually does not work, so it is better to store it locally.
 
 The next steps will install and run the Ubuntu image:
 
-1. Start VirtualBox
-2. Select **New** from the top-left (the blue 'star')
-3. Give the virtual machine a name, for example **Genomics**. Type is **Linux** and Version **Ubuntu (64-bit)**, or **Linux (64-bit)**. Click 'next'.
-4. Select Memory size: keep the setting in the green, but above 1GB. For this workshop we recommend to use 80% of the available memory. Click 'next'
-5. Load the image by selecting 'Use an existing virtual hard disk file' and locate the **.vdi** file. Click 'create'.
-6. Open **Settings -> System -> Processor** and select almost all CPUs: leave 1 for the host. 
-7. Clicking **Start** (green arrow) should now start Ubuntu and you will automatically login.
-8. It is now recommended to leave the host system alone and work only on the Ubuntu virtual machine.
+1. Start VMWare player
+2. Select **Open existing VM** available on the main screen and locate the **Ubuntu Bioinformatics 22.04.vmx** file in the main folder of the VM.
+3. Select **Edit virtual machine settings** to make the VM fit your needs. For memory size: keep the setting in the green, but above 1GB. For this workshop we recommend to use 80% of the available memory. Click **ok**
+4. Clicking **Play virtual machine** (green arrow) should now start Ubuntu and you will automatically login.
+5. It is now recommended to leave the host system alone and work only on the Ubuntu virtual machine.
 
 The image is a regular Ubuntu install, so if you install this on your laptop or desktop you can continue to use it.
 
-The password for the user is **genetwister** and the Ubuntu user has superuser access ('sudo').  
+The password for the **bioinf** user is **bioinf** and the Ubuntu user has superuser access ('sudo').  
 
 ## Installing the data and tools on your own Ubuntu
 
 The list of tools used for workshop:
 
-1. Java 8
+1. Java 11
 2. Assembly-stats
 3. Minimap2
-4. Canu
-5. Platanus
+4. Flye assembler
+5. Hifiasm assembler 
 6. Mummer 4
 7. Samtools & BCF tools
 8. Tablet
-9. Integrative Genomics Viewer (optional)
-
-The workshop code folder contains a shell-script [installing_workshop_vm.sh]({{site.workshop_site}}code/installing_workshop_vm.sh) which installs all required packages.
-
-The data are available upon a request. Send email to [Andrzej S. Czech](mailto:a.s.czech@genetwister.nl) for a download link.
 
 ## Origin of the data
 
-For this workshop we have selected read data sets and a particular region of a cultivar of **Arabidopsis thaliana (Thale cress)**. 
+The [data are available](https://dropbox.com) for download. We are using data from the [Telomere 2 telomere assembly of kiwi](https://academic.oup.com/hr/article/10/2/uhac264/6865344).
+
+For this workshop we have selected read data sets and a particular region of a cultivar of this **kiwifruit**. 
 
 ## Rounding up
 
