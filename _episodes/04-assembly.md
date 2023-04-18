@@ -17,81 +17,34 @@ apps:
 
 In this section we focus on creating assemblies using the Flye and hifiasm assemblers.
 
+## Subsampled read sets
+Creating a de novo assembly is one of the most compute intensive tasks in bioinformatics. Small genomes, like bacterial genomes, can be done on a laptop, but in most cases you need much more memory and CPU-power. That is the reason why for this workshop we focus on a ~1.5M region of a plant genome. However, assembly can still be a challenging task for your computer. Hence there are sub-sampled read sets available, containing 30% of the reads. You can make this set bigger of smaller by using:
+~~~
+seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
+~~~
+{: .bash}
+
+
 ## Long read assemblies
 
-We will start with Flye assemblies based on the PacBio and Nanopore data.
+We will start with Flye assemblies based on the PacBio and Nanopore data. When there are enough resources available, please create assemblies of both the full read set, as well as the subsampled read set (so four assemblies in total). 
 ~~~
 flye
+usage: flye (--pacbio-raw | --pacbio-corr | --pacbio-hifi | --nano-raw |
+	     --nano-corr | --nano-hq ) file1 [file_2 ...]
+	     --out-dir PATH
+
+	     [--genome-size SIZE] [--threads int] [--iterations int]
+	     [--meta] [--polish-target] [--min-overlap SIZE]
+	     [--keep-haplotypes] [--debug] [--version] [--help] 
+	     [--scaffold] [--resume] [--resume-from] [--stop-after] 
+	     [--read-error float] [--extra-params] 
+	     [--deterministic]
 ~~~
 {: .bash}
 
-Canu can use a configuration file ('specs file'). For our assemblies we will use these settings:
-~~~
-useGrid=False
-corOutCoverage=30  # default is 40
-corMinCoverage=4 # default is 4
-minOverlapLength=1000 # default is 500
-minReadLength=1000
-ovlMerDistinct=0.99 # change from auto mode to 0.99 in order to decrease runtime. 
-maxThreads=1
-maxMemory=2.5G
-merylMemory=2.5G
-merylThreads=1
-cormhapThreads=1
-cormhapMemory=2.5G
-corMemory=2.5G
-corThreads=1
-obtovlMemory=2.5G
-obtovlThreads=1
-utgovlMemory=2.5G
-utgovlThreads=1
-oeaMemory=2.5G
-oeaThreads=1
 
-~~~
-{: .bash}
-> ## Configuration file
-> Added the configuration line to a text file. The text editor **nano** is install in the VM. Name this file **canu.spec**.
->
-> You can change the '...Memory' and '.../Threads' to optimize Canu run time. With **useGrid=True** on SLURM/SGE Canu will automatically divide jobs on the cluster. 
-{: .challenge}
 
-> ## Run Canu on PacBio data
-> You can now run Canu using the following command:
-> ~~~
-> ./tools/canu-1.7.1/Linux-amd64/bin/canu -s results/canu.spec -pacbio-raw ./data/raw_data/pacbio_reads.fasta -p canu_pacbio -d results/canu_pacbio genomeSize=1M
-> ~~~
-> {: .bash}
-> Try to find out in the manual what each of the following settings mean and how they effect the assembly process:
->
-> 1. corOutCoverage
-> 2. corMinCoverage
-> 3. minOverlapLength
-> 4. minReadLength
-> 5. ovlMerDistinct
-{: .challenge}
-
-> ## The Canu log file
-> During the assembly process, Canu generates a report file. In this case:
-> ~~~
-> ./results/canu_pacbio/canu_pacbio.report
-> ~~~
-> {: .bash}
-> While Canu is running, try to find out what steps Canu will take to assembly the reads and how it works.
-> Have a look at this file while Canu is running. What do you see? Find the expected coverage after each step and try to explain what is happening.
-> {: .solution}
-{: .challenge}
-
-> ## Run Canu on the Nanopore data
-> Change the command in such a way that it will use the Nanopore data for assembly. Follow the process of Canu. What do you see? Find the expected coverage after each step and try to explain what is happening.
-> 
-> > ## Solution
-> >~~~
-> >./tools/canu-1.7.1/Linux-amd64/bin/canu -s results/canu.spec -nanopore-raw ./data/raw_data/nanopore_reads.fastq -p canu_nanopore -d results/canu_nanopore genomeSize=1M
-> >~~~
-> >{: .bash}
-> {: .solution}
-{: .challenge}
 
 ## Basic statistics on the assemblies
 
