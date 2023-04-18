@@ -40,9 +40,13 @@ In this two day workshop you will learn about two most common long read sequenci
 <p id="who">
   <strong>Who:</strong>
   The workshop is intended for bioinformaticians or researchers who want to learn about application of latest sequencing technologies in genomics. 
-  <strong>No prior experience with PacBio or ONT sequencing data is required.</strong><br />
-  There is a <a href="https://docs.google.com/document/d/10Vii37lR8TYYvJnYartqw2RxHooBfiWagJyHWOd6qXs/edit?usp=sharing">Google doc</a> available for sharing comments and results during our workshop.
+  <strong>No prior experience with PacBio or ONT sequencing data is required.</strong>
+
 </p>
+<h3>Sharing results</h3>
+<p>
+  There is a <a href="https://docs.google.com/document/d/10Vii37lR8TYYvJnYartqw2RxHooBfiWagJyHWOd6qXs/edit?usp=sharing">Google doc</a> available for sharing comments and results during our workshop.
+  </p>
 
 {% comment %}
   LOCATION
