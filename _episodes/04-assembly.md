@@ -20,7 +20,7 @@ In this section we focus on creating assemblies using the Flye and hifiasm assem
 ## Subsampled read sets
 Creating a de novo assembly is one of the most compute intensive tasks in bioinformatics. Small genomes, like bacterial genomes, can be done on a laptop, but in most cases you need much more memory and CPU-power. That is the reason why for this workshop we focus on a ~1.5M region of a plant genome. However, assembly can still be a challenging task for your computer. Hence there are sub-sampled read sets available, containing 30% of the reads. You can make this set bigger of smaller by using:
 ~~~
-seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
+{{site.vm_prompt}}seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 ~~~
 {: .bash}
 
@@ -30,7 +30,7 @@ seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 > ## Flye 
 > We will start with Flye assemblies based on the PacBio and Nanopore data. When there are enough resources available, please create assemblies of both the full read set, as well as the subsampled read set (so four assemblies in total). 
 > ~~~
-> flye
+> {{site.vm_prompt}}flye
 > usage: flye (--pacbio-raw | --pacbio-corr | --pacbio-hifi | --nano-raw |
 >	     --nano-corr | --nano-hq ) file1 [file_2 ...]
 >	     --out-dir PATH
@@ -46,19 +46,19 @@ seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 > What are the correct settings for each of the assemblies? 
 > > ## Solution
 > > ~~~
-> > flye --pacbio-hifi ~/data/reads/hifi_reads.fastq -t 6 -o flye_hifi
-> > flye --pacbio-hifi ~/data/reads/hifi_sub.reads.fastq -t 6 -o flye_hifi_sub
-> > flye --nano-hq ~/data/reads/ont_reads.fastq -t 6 -o flye_ont 
-> > flye --nano-hq ~/data/reads/ont_sub.reads.fastq -t 6 -o flye_ont_sub
+> > {{site.vm_prompt}}flye --pacbio-hifi ~/data/reads/hifi_reads.fastq -t 6 -o flye_hifi
+> > {{site.vm_prompt}}flye --pacbio-hifi ~/data/reads/hifi_sub.reads.fastq -t 6 -o flye_hifi_sub
+> > {{site.vm_prompt}}flye --nano-hq ~/data/reads/ont_reads.fastq -t 6 -o flye_ont 
+> > {{site.vm_prompt}}flye --nano-hq ~/data/reads/ont_sub.reads.fastq -t 6 -o flye_ont_sub
 > > ~~~
 > {: .solution}
 > The output folder contains a log file which shows progress, but is also very handy for inspection when everything is done. 
 > Which steps does flye take and what do they mean?
 > ## Hifiasm
 > Hifiasm is designed for assembling HiFi data. And because of the high quality of HiFi reads, it is very good in splitting up haplotypes. 
-> For this workshop we also have high quality Nanopore data, so we give this also a try.
+> For this workshop we also have high quality Nanopore data, so we will give this also a try.
 > ~~~
-> ~/tools/hifiasm
+> {{site.vm_prompt}}~/tools/hifiasm
 > Usage: hifiasm [options] <in_1.fq> <in_2.fq> <...>
 > Options:
 >   Input/Output:
@@ -153,18 +153,18 @@ seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 > Run the assemblies. You might want to redirect output to a file for inspection later.
 > > ## Solution
 > > ~~~
-> > mkdir ~/data/results/hifiasm_hifi
-> > cd ~/data/results/hifiasm_hifi
-> > ~/tools/hifiasm -t 6 ~/data/reads/hifi_reads.fastq > hifiasm_hifi.log
-> > mkdir ~/data/results/hifiasm_hifi_sub
-> > cd ~/data/results/hifiasm_hifi_sub
-> > ~/tools/hifiasm -t 6 ~/data/reads/hifi_sub.reads.fastq > hifiasm_hifi_sub.log
-> > mkdir ~/data/results/hifiasm_ont
-> > cd ~/data/results/hifiasm_ont
-> > ~/tools/hifiasm -t 6 ~/data/reads/ont_reads.fastq > hifiasm_ont.log
-> > mkdir ~/data/results/hifiasm_ont_sub
-> > cd ~/data/results/hifiasm_ont_sub
-> > ~/tools/hifiasm -t 6 ~/data/reads/ont_sub.reads.fastq > hifiasm_ont_sub.log
+> > {{site.vm_prompt}}mkdir ~/data/results/hifiasm_hifi
+> > {{site.vm_prompt}}cd ~/data/results/hifiasm_hifi
+> > {{site.vm_prompt}}~/tools/hifiasm -t 6 ~/data/reads/hifi_reads.fastq > hifiasm_hifi.log
+> > {{site.vm_prompt}}mkdir ~/data/results/hifiasm_hifi_sub
+> > {{site.vm_prompt}}cd ~/data/results/hifiasm_hifi_sub
+> > {{site.vm_prompt}}~/tools/hifiasm -t 6 ~/data/reads/hifi_sub.reads.fastq > hifiasm_hifi_sub.log
+> > {{site.vm_prompt}}mkdir ~/data/results/hifiasm_ont
+> > {{site.vm_prompt}}cd ~/data/results/hifiasm_ont
+> > {{site.vm_prompt}}~/tools/hifiasm -t 6 ~/data/reads/ont_reads.fastq > hifiasm_ont.log
+> > {{site.vm_prompt}}mkdir ~/data/results/hifiasm_ont_sub
+> > {{site.vm_prompt}}cd ~/data/results/hifiasm_ont_sub
+> > {{site.vm_prompt}}~/tools/hifiasm -t 6 ~/data/reads/ont_sub.reads.fastq > hifiasm_ont_sub.log
 > > ~~~
 > > {: .bash}
 > {: .solution}
@@ -173,6 +173,8 @@ seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 > 2. The log file contains lines like this: [M::ha_hist_line]    98: ** 55. What are they?
 > 3. Sketch a plot of a k-mer distribution of: a) low-coverage data set; b) high coverage bacterial genome and c) a high coverage read set of a diploid genome
 > 4. What happened to the Nanopore-based assemblies?
+> ## Combining PacBio and Nanopore
+> This is an additional challenge: hifiasm supports the usage of nanopore data together with HiFi data through the --ul option. Give it a go! 
 {: .challenge}
 
 ## Basic statistics on the assemblies
