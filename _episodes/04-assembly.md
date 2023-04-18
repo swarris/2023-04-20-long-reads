@@ -46,10 +46,10 @@ Creating a de novo assembly is one of the most compute intensive tasks in bioinf
 > What are the correct settings for each of the assemblies? 
 > > ## Solution
 > > ~~~
-> > {{site.vm_prompt}}flye --pacbio-hifi ~/data/reads/hifi_reads.fastq -t 6 -o flye_hifi
-> > {{site.vm_prompt}}flye --pacbio-hifi ~/data/reads/hifi_sub.reads.fastq -t 6 -o flye_hifi_sub
-> > {{site.vm_prompt}}flye --nano-hq ~/data/reads/ont_reads.fastq -t 6 -o flye_ont 
-> > {{site.vm_prompt}}flye --nano-hq ~/data/reads/ont_sub.reads.fastq -t 6 -o flye_ont_sub
+> > {{site.vm_prompt}}flye --pacbio-hifi -f0 ~/data/reads/hifi_reads.fastq -t 6 -o flye_hifi
+> > {{site.vm_prompt}}flye --pacbio-hifi -f0 ~/data/reads/hifi_sub.reads.fastq -t 6 -o flye_hifi_sub
+> > {{site.vm_prompt}}flye --nano-hq -f0 ~/data/reads/ont_reads.fastq -t 6 -o flye_ont 
+> > {{site.vm_prompt}}flye --nano-hq -f0 ~/data/reads/ont_sub.reads.fastq -t 6 -o flye_ont_sub
 > > ~~~
 > {: .solution}
 > The output folder contains a log file which shows progress, but is also very handy for inspection when everything is done. 
@@ -176,76 +176,98 @@ Creating a de novo assembly is one of the most compute intensive tasks in bioinf
 > ## Combining PacBio and Nanopore
 > This is an additional challenge: hifiasm supports the usage of nanopore data together with HiFi data through the --ul option. Give it a go! 
 {: .challenge}
+## Getting a fasta-file
+Hifiasm generates a .gfa file, which can be converted into a fasta file using, for example, awk:
+~~~
+{{site.vm_prompt}}awk '/^S/{print ">"$2"\n"$3}' hifiasm.asm.bp.p_ctg.gfa | fold > hifiasm.asm.bp.p_ctg.fa
+~~~
+{: .bash}
 
 ## Basic statistics on the assemblies
 
 > ## Get statistics
-> Use the assembly-stats program from the previous session to get the statistics on the six assemblies.
+> Use the assembly-stats program from the previous session to get the statistics on the assemblies.
 > > ## PacBio Flye assembly
 > >~~~
-> >./tools/assembly-stats-master/build/assembly-stats ./results/canu_pacbio/canu_pacbio.contigs.fasta 
-> >stats for ./results/canu_pacbio/canu_pacbio.contigs.fasta
-> >sum = 1042738, n = 2, ave = 521369.00, largest = 919604
-> >N50 = 919604, n = 1
-> >N60 = 919604, n = 1
-> >N70 = 919604, n = 1
-> >N80 = 919604, n = 1
-> >N90 = 123134, n = 2
-> >N100 = 123134, n = 2
-> >N_count = 0
-> >Gaps = 0
+> > {{site.vm_prompt}}assembly-stats ~/data/results/flye_hifi/assembly.fasta
+> > stats for assembly.fasta
+> > sum = 96610088, n = 3198, ave = 30209.53, largest = 1225347
+> > N50 = 31643, n = 1140
+> > N60 = 29490, n = 1457
+> > N70 = 27165, n = 1797
+> > N80 = 23901, n = 2174
+> > N90 = 19790, n = 2616
+> > N100 = 10115, n = 3198
+> > N_count = 0
+> > Gaps = 0
 > >~~~
 > >{: .bash}
 > {: .solution}
 > > ## Nanopore Flye assembly
 > >~~~
-> >./tools/assembly-stats-master/build/assembly-stats ./results/canu_nanopore/canu_nanopore.contigs.fasta 
-> >stats for ./results/canu_nanopore/canu_nanopore.contigs.fasta
-> >sum = 1001134, n = 1, ave = 1001134.00, largest = 1001134
-> >N50 = 1001134, n = 1
-> >N60 = 1001134, n = 1
-> >N70 = 1001134, n = 1
-> >N80 = 1001134, n = 1
-> >N90 = 1001134, n = 1
-> >N100 = 1001134, n = 1
-> >N_count = 0
-> >Gaps = 0
+> > {{site.vm_prompt}}assembly-stats ~/data/results/flye_ont/assembly.fasta 
+> > stats for assembly.fasta
+> > sum = 54294716, n = 367, ave = 147942.01, largest = 509128
+> > N50 = 188004, n = 104
+> > N60 = 168365, n = 135
+> > N70 = 149096, n = 169
+> > N80 = 122872, n = 209
+> > N90 = 97252, n = 259
+> > N100 = 667, n = 367
+> > N_count = 0
+> > Gaps = 0
 > >~~~
 > >{: .bash}
 > > ## PacBio Hifiasm assembly
 > >~~~
-> >./tools/assembly-stats-master/build/assembly-stats ./results/canu_pacbio/canu_pacbio.contigs.fasta 
-> >stats for ./results/canu_pacbio/canu_pacbio.contigs.fasta
-> >sum = 1042738, n = 2, ave = 521369.00, largest = 919604
-> >N50 = 919604, n = 1
-> >N60 = 919604, n = 1
-> >N70 = 919604, n = 1
-> >N80 = 919604, n = 1
-> >N90 = 123134, n = 2
-> >N100 = 123134, n = 2
-> >N_count = 0
-> >Gaps = 0
+> > {{site.vm_prompt}} ~/data/results/hifiasm_hifi/hifiasm.asm.bp.p_ctg.fa
+> > stats for hifiasm.asm.bp.p_ctg.fa
+> > sum = 79670447, n = 2290, ave = 34790.59, largest = 1225363
+> > N50 = 34615, n = 834
+> > N60 = 32217, n = 1073
+> > N70 = 30164, n = 1328
+> > N80 = 27704, n = 1603
+> > N90 = 24103, n = 1908
+> > N100 = 14305, n = 2290
+> > N_count = 0
+> > Gaps = 0
 > >~~~
 > >{: .bash}
 > {: .solution}
-> > ## Nanopore Hifiasm assembly
-> >~~~
-> >./tools/assembly-stats-master/build/assembly-stats ./results/canu_nanopore/canu_nanopore.contigs.fasta 
-> >stats for ./results/canu_nanopore/canu_nanopore.contigs.fasta
-> >sum = 1001134, n = 1, ave = 1001134.00, largest = 1001134
-> >N50 = 1001134, n = 1
-> >N60 = 1001134, n = 1
-> >N70 = 1001134, n = 1
-> >N80 = 1001134, n = 1
-> >N90 = 1001134, n = 1
-> >N100 = 1001134, n = 1
-> >N_count = 0
-> >Gaps = 0
-> >~~~
-> >{: .bash}
-> {: .solution}
-> Discuss the results and make a comparison of the four assemblies. Do the results match your expectations? Which one do you prefer and why?
+> Discuss the results and make a comparison of the assemblies. Do the results match your expectations? Which one do you prefer and why?
 {: .challenge}
-> ## Additional challenge
-> Play around with some of the settings of Canu and check the effects on the process and the end results. Change for example the minimum read length or the error correction values.
-{: .challenge} 
+
+> ## Quast
+> The generated assemblies appear to be much larger than expected. We will investigate this further. A key tool in comparing assembly statistics is the tool quast.py.
+> Quast outputs many different statistics, like N50, maximum contig length, GC percentage, A50 plot, etc in pdf, text and html formats. Run quast on your assemblies and inspect the results.
+> > ## Solution
+> >~~~
+> > {{site.vm_prompt}}cd ~
+> > {{site.vm_prompt}}mkdir quast
+> > {{site.vm_prompt}}cd quast
+> > {{site.vm_prompt}}quast.py -o all_raw_assemblies -t 6 ~/data/results/hifiasm_hifi/hifiasm_hifi.p_ctg.fa ~/data/results/hifiasm_hifi_sub/hifiasm_hifi_sub.p_ctg.fa ~/data/results/hifiasm_hifi_ont/hifiasm_hifi_ont.p_ctg.fa ~/data/results/flye_hifi_sub/flye_hifi_sub.fasta  ~/data/results/flye_hifi/flye_hifi.fasta ~/data/results/flye_ont_sub/flye_ont_sub.fasta ~/data/results/flye_ont/flye_ont.fasta
+> >~~~
+> >{: .bash}
+> {: .solution}
+> Please discuss the following items:
+> 1. Given the statistics, which assembly do you prefer?
+> 2. What does the GC-plot show and why is this plot relevant?
+> 3. Check out the icarus view. What would be a nice length to filter the contigs on to remove the noise and keep the ~1.5mb region?
+{: .challenge}
+> ## Filtering the assembly
+> We can use seqtk to filter the assemblies based on sequence length N:
+>~~~
+> {{site.vm_prompt}}seqtk seq -L 100000 assembly.fasta > assembly_filtered.fasta
+>~~~
+>{: .bash}
+> Use the length(s) you determined in the previous section to filter the assemblies and run quast on these files to see the effect of this filtering.
+> > ## Solution
+> > Use for the assemblies based on the full read set a length of 500000 and for the assemblies based on the subsampled read sets a length of 200000.
+> > ~~~
+> > {{site.vm_prompt}}quast.py -o all_filtered_assemblies -t 6 ~/data/results/hifiasm_hifi/hifiasm_hifi_p.fa ~/data/results/hifiasm_hifi_sub/hifiasm_hifi_sub_p.fa ~/data/results/hifiasm_hifi_ont/hifiasm_hifi_ont_p.fa ~/data/results/flye_hifi_sub/flye_hifi_sub_p.fasta  ~/data/results/flye_hifi/flye_hifi_p.fasta ~/data/results/flye_ont_sub/flye_ont_sub_p.fasta ~/data/results/flye_ont/flye_ont_p.fasta
+> > ~~~
+> >{: .bash}
+> {: .solution}
+> Are you satisfied with the results?
+{: .challenge}
+ 
