@@ -46,6 +46,8 @@ The list of tools used for workshop:
 6. Mummer 4
 7. Samtools & BCF tools
 8. Tablet
+9. seqtk
+10. Quast
 
 ## Origin of the data
 

@@ -11,8 +11,8 @@ keypoints:
 - "(Near-) exact contigs show up as a diagonal line in a mummerplot"
 - "Repeat content shows up as dots / lines across the image"
 apps:
-- "./tools/mummer-4.0.0beta2/nucmer"
-- "./tools/mummer-4.0.0beta2/mummerplot"
+- "nucmer"
+- "mummerplot"
 ---
 
 ## Evaluating the assemblies through comparisons
@@ -24,17 +24,18 @@ To answer this question, we will use **mummerplot** to align two sequence files 
 The first step is to align two fasta files using **nucmer**. Based on these alignment **mummerplot** will provide a PNG image with the matching regions, colored based on the identity score.
 
 ~~~
-./tools/mummer-4.0.0beta2/nucmer
+nucmer
 ~~~
 {: .bash}
 
 ~~~
-./tools/mummer-4.0.0beta2/mummerplot
+mummerplot
 ~~~
 {: .bash}
 
-> ## Comparison to cultivar reference genome
-> Use both applications to compare the three assemblies to the reference sequence:
+> ## Comparison to kiwifruit reference genome
+> Use both applications to compare the four assemblies to the reference sequence:
+> Use both applications to compare the four assemblies to the reference sequence:
 >~~~
 > ./data/references/reference1MB.fasta
 >~~~
