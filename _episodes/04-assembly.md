@@ -173,6 +173,7 @@ Creating a de novo assembly is one of the most compute intensive tasks in bioinf
 > 2. The log file contains lines like this: [M::ha_hist_line]    98: ** 55. What are they?
 > 3. Sketch a plot of a k-mer distribution of: a) low-coverage data set; b) high coverage bacterial genome and c) a high coverage read set of a diploid genome
 > 4. What happened to the Nanopore-based assemblies?
+{: .challenge}
 > ## Combining PacBio and Nanopore
 > This is an additional challenge: hifiasm supports the usage of nanopore data together with HiFi data through the --ul option. Give it a go! 
 {: .challenge}
@@ -218,6 +219,7 @@ Hifiasm generates a .gfa file, which can be converted into a fasta file using, f
 > > Gaps = 0
 > >~~~
 > >{: .bash}
+> {: .solution}
 > > ## PacBio Hifiasm assembly
 > >~~~
 > > {{site.vm_prompt}} ~/data/results/hifiasm_hifi/hifiasm.asm.bp.p_ctg.fa
