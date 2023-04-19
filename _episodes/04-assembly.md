@@ -7,7 +7,7 @@ questions:
 - "What type of information is given by the assembler?" 
 objectives:
 - "To create de novo assemblies based on PacBio and Nanopore data"
-- "Learn to interpet assembly results and logs"
+- "Learn to interpret assembly results and logs"
 keypoints:
 - "Each platform and each data sets requires hands-on work with the assembler"
 apps:
