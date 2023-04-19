@@ -24,14 +24,13 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 
 ~~~
 {site.vm_prompt}}nucmer REF QUERY --delta=out.delta
-~~~
-{: .bash}
-
-~~~
 {site.vm_prompt}}mummerplot --color --medium --filter --layout -R REF -Q QUERY --prefix OUTPUT_PREFIX --fat --png out.delta
 ~~~
 {: .bash}
 
+> ## Haplotypes of hifiasm
+> Hifiasm generates two haplotpyes, next to the primary assembly. These haplotypes can be very different in many species, so let's see how our haplotypes compare. Use nucmer and mummerplot to create PNG of the comparison and discuss your results. How similar are they for example?   
+> Ali
 > ## Comparison to the kiwifruit reference genome
 > Use both applications to compare the four assemblies to the reference sequence:
 > Use both applications to compare the four assemblies to the reference sequence:

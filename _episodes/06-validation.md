@@ -100,3 +100,14 @@ samtools index mapping.sorted.bam
 > Have a close look at SNPs and other differences you might find.
 {: .challenge}
 
+## Whole genome analyzes
+
+In this workshop we focused on creating the assemblies and providing a first glance of the quality of the assemblies. Statistics like N50, maximum contig length, mapping quality of reads, etc. are very important in this. For further analyzes of your genome, several more steps need to be included to verify the results. These include:
+
+- Detecting and annotating repeat content
+- Aligning RNASeq or IsoSeq
+- Aligning known gene sequences / CDS from closely related species (if own species is not available)
+- Run gene prediction software, like prokka for bacterial genomes
+- BUSCO genes analysis
+
+
