@@ -51,7 +51,7 @@ The list of tools used for workshop:
 
 ## Origin of the data
 
-The [data are available](https://dropbox.com) for download. We are using data from the [Telomere 2 telomere assembly of kiwi](https://academic.oup.com/hr/article/10/2/uhac264/6865344).
+The data are available for download, links will be provided via e-mail. We are using data from the [Telomere 2 telomere assembly of kiwi](https://academic.oup.com/hr/article/10/2/uhac264/6865344).
 
 For this workshop we have selected read data sets and a particular region of a cultivar of this **kiwifruit**. 
 
