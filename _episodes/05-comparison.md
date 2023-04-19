@@ -5,10 +5,12 @@ exercises: 120
 questions:
 - "How do you compare draft assemblies with mummerplots?"
 objectives:
-- "Knowing how to use mummerplots and how to interpet the results"
+- "Knowing how to use mummerplots and how to interpret the results"
 keypoints:
 - "(Near-) exact contigs show up as a diagonal line in a mummerplot"
 - "Repeat content shows up as dots / lines across the image"
+- Haplotypes look very similar
+- Nanopore data seems to be of low quality
 apps:
 - "nucmer"
 - "mummerplot"
@@ -23,8 +25,8 @@ To answer this question, we will use **mummerplot** to align two sequence files 
 The first step is to align two fasta files using **nucmer**. Based on these alignment **mummerplot** will provide a PNG image with the matching regions, colored based on the identity score.
 
 ~~~
-{site.vm_prompt}}nucmer REF QUERY --delta=out.delta
-{site.vm_prompt}}mummerplot --color --medium --filter --layout -R REF -Q QUERY --prefix OUTPUT_PREFIX --fat --png out.delta
+{{site.vm_prompt}}nucmer REF QUERY --delta=out.delta
+{{site.vm_prompt}}mummerplot --color --medium --filter --layout -R REF -Q QUERY --prefix OUTPUT_PREFIX --fat --png out.delta
 ~~~
 {: .bash}
 

@@ -4,9 +4,11 @@ teaching: 30
 exercises: 120
 questions: 
 - "What is the quality of my assembly on a nucleotide level?"
-- "What impact does a SNP have on gene structure and function?"
 objectives:
+- Learn how to map reads to the created assemblies and interpret the results
 keypoints:
+- There seem to be several consensus calling issues
+- Nanopore assembly is of low quality
 apps:
 - "minimap2"
 - "~/tools/Tablet/tablet"
