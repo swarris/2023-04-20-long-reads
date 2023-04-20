@@ -72,7 +72,7 @@ During this session we will map the reads back to the assemblies to validate the
 > > ## Solution
 > > ~~~
 > > {{site.vm_prompt}}minimap2 -a -o ~/data/results/minimap2/flye_ont_raw.sam -t 3 -x map-ont --secondary=no ~/data/results/flye_ont_raw/flye_ont_raw.fasta /home/bioinf/data/reads/ont_subsample.reads.fastq
-> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/minimap2/flye_ont_raw.sam > ~/data/results/minimap2/flye_ont_raw_filtered.sam
+> > {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/minimap2/flye_ont_raw.sam > ~/data/results/minimap2/flye_ont_raw_filtered.sam
 > > ~~~
 > > {: .bash}
 > {: .solution}
