@@ -121,7 +121,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont_raw/flye_ont_raw.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont_raw --fat --png ref_flye_ont_raw.delta
 > > ~~~
 > > {: .bash}
-> > [Flye ont raw vs. reference genome](../fig/ref_flye_ont_raw.png)
+> > ![Flye ont raw vs. reference genome](../fig/ref_flye_ont_raw.png)
 > {: .solution}
 > Does this indeed improve the assembly? 
 {: .challenge} 

@@ -1,7 +1,7 @@
 ---
 title: "Validation of assemblies"
 teaching: 30
-exercises: 120
+exercises: 60
 questions: 
 - "What is the quality of my assembly on a nucleotide level?"
 objectives:
@@ -25,7 +25,7 @@ During this session we will map the reads back to the assemblies to validate the
 > 
 > You can use the PacBio subsampled data to speed things up:
 > ~~~
-> ./data/pacbio_reads.subsample.fasta
+> ./data/reads/pacbio_sub.reads.fastq
 > ~~~
 > {: .bash}
 > > ## Solution
@@ -43,8 +43,8 @@ During this session we will map the reads back to the assemblies to validate the
 > {: .bash}
 > You might need to sort the SAM file: Tablet will report this if necessary. You can do this with samtools:
 >~~~
->samtools view -b -o mapping.bam mapping.sam
->samtools sort -O SAM mapping.bam > sorted.sam
+>{{site.vm_prompt}}samtools view -b -o mapping.bam mapping.sam
+>{{site.vm_prompt}}samtools sort -O SAM mapping.bam > sorted.sam
 >~~~
 >{: .bash}
 > Open Tablet and load the reference plus a SAM file. For each of the three results files, visually check:
