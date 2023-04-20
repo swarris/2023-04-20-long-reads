@@ -18,7 +18,7 @@ apps:
 In this section we focus on creating assemblies using the Flye and hifiasm assemblers.
 
 ## Subsampled read sets
-Creating a de novo assembly is one of the most compute intensive tasks in bioinformatics. Small genomes, like bacterial genomes, can be done on a laptop, but in most cases you need much more memory and CPU-power. That is the reason why for this workshop we focus on a ~1.5M region of a plant genome. However, assembly can still be a challenging task for your computer. Hence there are sub-sampled read sets available, containing 30% of the reads. You can make this set bigger of smaller by using:
+Creating a de novo assembly is one of the most compute intensive tasks in bioinformatics. Small genomes, like bacterial genomes, can be done on a laptop, but in most cases you need much more memory and CPU-power. That is the reason why for this workshop we focus on a ~2.5M region of a plant genome. However, assembly can still be a challenging task for your computer. Hence there are sub-sampled read sets available, containing 30% of the reads. You can make this set bigger of smaller by using:
 ~~~
 {{site.vm_prompt}}seqtk sample hifi_reads.fastq 0.1 > hifi_sub.reads.fastq
 ~~~
