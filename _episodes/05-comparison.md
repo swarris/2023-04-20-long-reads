@@ -82,10 +82,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 {: .challenge}
 
 > ## Flye ONT assembly
-> There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of:
-> 
-> 1. The hifiasm hifi primary filtered assembly against the flye ont filtered assembly
-> 2. The reference genomic region against the unfiltered flye ont assembly
+> There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of a) the hifiasm hifi primary filtered assembly against the flye ont filtered assembly and b) the reference genomic region against the unfiltered flye ont assembly
 > 
 > Inspect the results. What are you observations?
 > > ## hifiasm hifi primary filtered assembly against the flye ont filtered assembly > >~~~
