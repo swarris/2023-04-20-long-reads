@@ -74,14 +74,6 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > >{: .bash}
 > >![Flye Nanopore vs. reference genome](../fig/ref_flye_ont_p.png)
 > {: .solution}
-> > ## Flye hifi vs. reference genome
-> >~~~
-> > {{site.vm_prompt}}nucmer ~/data/genome/kiwi_contig.fa ../flye_ont/flye_ont_p.fasta --delta=ref_flye_ont_p.delta
-> > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont/flye_ont_p.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont_p --fat --png ref_flye_ont_p.delta
-> >~~~
-> >{: .bash}
-> >![Flye hifi vs. reference genome](../fig/ref_flye_ont_p.png)
-> {: .solution}
 > Now discuss:
 > 
 > 1. What do you see? 
@@ -91,8 +83,10 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 
 > ## Flye ONT assembly
 > There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of:
+> 
 > 1. The hifiasm hifi primary filtered assembly against the flye ont filtered assembly
 > 2. The reference genomic region against the unfiltered flye ont assembly
+> 
 > Inspect the results. What are you observations?
 > > ## hifiasm hifi primary filtered assembly against the flye ont filtered assembly > >~~~
 > > {{site.vm_prompt}}nucmer ../hifiasm_hifi/hifiasm_hifi_p.fa ../flye_ont/flye_ont_p.fasta --delta=hifiasm_hifi_flye_ont_p.delta
@@ -120,7 +114,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont_raw/flye_ont_raw.fasta -R ../hifiasm_hifi/hifiasm_hifi_p.fa --prefix hifiasm_hifi_flye_ont_raw --fat --png hifiasm_hifi_flye_ont_raw.delta
 > > ~~~
 > > {: .bash}
-> {: . solution}
+> {: .solution}
 > Does this indeed improve the assembly? 
 {: .challenge} 
  
