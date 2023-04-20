@@ -76,13 +76,17 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > {: .solution}
 > Now discuss:
 > 
-> 1 What do you see? 
-> 2 Are the assemblies similar to the reference or not? And why (not)?
-> 3 Which sequencing platform do you prefer?
+> 1. What do you see? 
+> 2. Are the assemblies similar to the reference or not? And why (not)?
+> 3. Which sequencing platform do you prefer?
+> 
 {: .challenge}
 
 > ## Flye ONT assembly
-> There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of a) the hifiasm hifi primary filtered assembly against the flye ont filtered assembly and b) the reference genomic region against the unfiltered flye ont assembly
+> There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of:
+> 
+> 1. The hifiasm hifi primary filtered assembly against the flye ont filtered assembly
+> 2. The reference genomic region against the unfiltered flye ont assembly
 > 
 > Inspect the results. What are you observations?
 >
@@ -94,6 +98,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > >{: .bash}
 > >![Hifiasm hifi vs. flye ont](../fig/hifiasm_hifi_flye_ont_p.png)
 > {: .solution}
+>
 > > ## Flye ont unfiltered vs. reference
 > >~~~
 > > {{site.vm_prompt}}nucmer ~/data/genome/kiwi_contig.fa ../flye_ont/flye_ont.fasta --delta=ref_flye_ont.delta
@@ -102,11 +107,12 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > >{: .bash}
 > >![Flye ont vs. reference genome](../fig/ref_flye_ont.png)
 > {: .solution}
+>
 > It could be that the supplied data is raw nanopore data (normal base-calling), and not high-quality nanopore data. The latter takes significantly more time to generate and is therefore less common. Investigate this by:
 > 
-> 1 Creating a Flye assembly using the --nano-raw in stead of the --nano-hq option
-> 2 Filter the assembly on length with seqtk seq -L
-> 3 Compare the resulting assembly using mummerplot and the reference genome.
+> 1. Creating a Flye assembly using the --nano-raw in stead of the --nano-hq option
+> 2. Filter the assembly on length with seqtk seq -L
+> 3. Compare the resulting assembly using mummerplot and the reference genome.
 >
 > > ## New flye ont raw assembly
 > > The assembly is also [available for download](https://www.dropbox.com/s/fil3vgc0lhcmtl2/flye_ont_raw.fa?dl=0). 
