@@ -25,11 +25,21 @@ During this session we will map the reads back to the assemblies to validate the
 > 
 > You can use the PacBio subsampled data to speed things up:
 > ~~~
-> ./data/reads/pacbio_sub.reads.fastq
+> ./data/reads/pacbio_subsamble.reads.fastq
 > ~~~
 > {: .bash}
-> > ## Solution
+>
+> > ## ONT reads on Flye ONT assembly
 > > ~~~
+> > {{site.vm_prompt}}minimap2 -a -o ~/data/results/flye_ont.sam -t 3 -x map-ont --secondary=no ~/data/results/flye_ont/flye_ont_p.fasta /home/bioinf/data/reads/ont_subsample.reads.fastq
+> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/flye_ont.sam > ~/data/results/flye_ont_filtered.sam
+> > ~~~
+> > {: .bash}
+>
+> > ## Pacbio reads on Hifiasm hifi assembly
+> > ~~~
+> > {{site.vm_prompt}}minimap2 -a -o hifiasm_hifi.sam -t 3 -x map-hifi --secondary=no ../hifiasm_hifi/hifiasm_hifi_p.fa /home/bioinf/data/reads/hifi_subsample.reads.fastq 
+> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/hifiasm_hifi.sam > ~/data/results/hifiasm_hifi_filtered.sam
 > > ~~~
 > > {: .bash}
 > {: .solution}
