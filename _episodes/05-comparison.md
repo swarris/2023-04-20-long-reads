@@ -31,8 +31,17 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 {: .bash}
 
 > ## Haplotypes of hifiasm
-> Hifiasm generates two haplotpyes, next to the primary assembly. These haplotypes can be very different in many species, so let's see how our haplotypes compare. Use nucmer and mummerplot to create PNG of the comparison and discuss your results. How similar are they for example?   
-> Ali
+> Hifiasm generates two haplotpyes, next to the primary assembly. These haplotypes can be very different in many species, so let's see how our haplotypes compare. Use nucmer and mummerplot to create PNG of the comparison and discuss your results. How similar are they for example?
+> > ## Solution
+> > ~~~
+> > {{site.vm_prompt}}mkdir mummer; cd mummer
+> > {{site.vm_prompt}}nucmer ../hifiasm_hifi/hifiasm_hifi_hap1.fa ../hifiasm_hifi/hifiasm_hifi_hap2.fa --delta=hifiasm_hifi_hap1_hap2.delta
+> > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../hifiasm_hifi/hifiasm_hifi_hap2.fa -R ../hifiasm_hifi/hifiasm_hifi_hap1.fa --prefix hifiasm_hifi_hap1_hap2 --fat --png hifiasm_hifi_hap1_hap2.delta
+> > ~~~
+> > {: .bash}
+> > ![Hap1 vs Hap2](../fig/hifiasm_hifi_hap1_hap2.png)
+> {: .solution}
+{: .challenge}
 > ## Comparison to the kiwifruit reference genome
 > Use both applications to compare the four assemblies to the reference sequence:
 > Use both applications to compare the four assemblies to the reference sequence:
