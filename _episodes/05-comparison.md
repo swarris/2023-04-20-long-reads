@@ -45,7 +45,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > ## Solution
 > > ~~~
 > > {{site.vm_prompt}}cd ~/data/results/minimap
-> > {{site.vm_prompt}}minimap2 -a -o hifiasm_hap1_hap2.sam -t 3 -x map-hifi ../hifiasm_hifi/hifiasm_hifi_p.fa ../hifiasm_hifi/hifiasm_hifi_hap1.fa  ../hifiasm_hifi/hifiasm_hifi_hap2.fa
+> > {{site.vm_prompt}}minimap2 -a -o hifiasm_hap1_hap2.sam -t 3 -x map-hifi ../hifiasm_hifi/hifiasm_hifi_p.fa ../hifiasm_hifi/hifiasm_hifi_hap1.fa  ../hifiasm_hifi/hifiasm_hifi_hap2.fa 
 > > ~~~
 > > {: .bash}
 > > There are two deletions and 1 SNP in Hap2 compared to the primary assembly. Hap1 is exactly the same as the primary assembly.
@@ -85,7 +85,9 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of a) the hifiasm hifi primary filtered assembly against the flye ont filtered assembly and b) the reference genomic region against the unfiltered flye ont assembly
 > 
 > Inspect the results. What are you observations?
-> > ## hifiasm hifi primary filtered assembly against the flye ont filtered assembly > >~~~
+>
+> > ## hifiasm hifi primary filtered assembly against the flye ont filtered assembly
+> >~~~
 > > {{site.vm_prompt}}nucmer ../hifiasm_hifi/hifiasm_hifi_p.fa ../flye_ont/flye_ont_p.fasta --delta=hifiasm_hifi_flye_ont_p.delta
 > > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont/flye_ont_p.fasta -R ../hifiasm_hifi/hifiasm_hifi_p.fa --prefix hifiasm_hifi_flye_ont_p --fat --png hifiasm_hifi_flye_ont_p.delta
 > >~~~
