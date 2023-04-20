@@ -41,25 +41,46 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > {: .bash}
 > > ![Hap1 vs Hap2](../fig/hifiasm_hifi_hap1_hap2.png)
 > {: .solution}
+> To verify the results you can map both haplotypes to the primary assembly with minimap2 and visualize the results using Tablet. Can you spot the difference?
+> > ## Solution
+> > ~~~
+> > {{site.vm_prompt}}cd ~/data/results/minimap
+> > {{site.vm_prompt}}minimap2 -a -o hifiasm_hap1_hap2.sam -t 3 -x map-hifi ../hifiasm_hifi/hifiasm_hifi_p.fa ../hifiasm_hifi/hifiasm_hifi_hap1.fa  ../hifiasm_hifi/hifiasm_hifi_hap2.fa
+> > ~~~
+> > {. bash}
+> > There are two deletions and 1 SNP in Hap2 compared to the primary assembly. Hap1 is exactly the same as the primary assembly.
+> {. solution}
 {: .challenge}
+
 > ## Comparison to the kiwifruit reference genome
-> Use both applications to compare the four assemblies to the reference sequence:
-> Use both applications to compare the four assemblies to the reference sequence:
+> Make mummerplots of the filtered assemblies from our previous session compared to the reference kiwifruit contig.
 >~~~
-> ./data/references/reference1MB.fasta
+> ~/data/genome/kiwi_contig.fa
 >~~~
 >{: .bash}
-> > ## PacBio vs. reference genome
+> > ## Hifiasm PacBio vs. reference genome
 > >~~~
+> > nucmer ~/data/genome/kiwi_contig.fa ../hifiasm_hifi/hifiasm_hifi_p.fa --delta=ref_hifiasm_hifi_p.delta
+> > mummerplot --color --medium --filter --layout -Q ../hifiasm_hifi/hifiasm_hifi_p.fa -R ~/data/genome/kiwi_contig.fa --prefix ref_hifiasm_hifi_p --fat --png ref_hifiasm_hifi_p.delta
 > >~~~
 > >{: .bash}
-> >![PacBio](../fig/ref_pacbio.png)
+> >![Hifiasm PacBio vs. reference genome](../fig/ref_hifiasm_hifi_p.png)
 > {: .solution}
-> > ## Nanopore vs. reference genome
+> > ## Flye Nanopore vs. reference genome
 > >~~~
+> > nucmer ~/data/genome/kiwi_contig.fa ../flye_ont/flye_ont_p.fasta --delta=ref_flye_ont_p.delta
+> > mummerplot --color --medium --filter --layout -Q ../flye_ont/flye_ont_p.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont_p --fat --png ref_flye_ont_p.delta
 > >~~~
 > >{: .bash}
-> >![Nanopore](../fig/ref_nanopore.png)
+> >![Flye Nanopore vs. reference genome](../fig/ref_flye_ont_p.png)
+> {: .solution}
+> > ## Flye hifi vs. reference genome
+> >~~~
+> > nucmer ~/data/genome/kiwi_contig.fa ../flye_ont/flye_ont.fasta --delta=ref_flye_ont.delta
+> > mummerplot --color --medium --filter --layout -Q ../flye_ont/flye_ont.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont --fat --png ref_flye_ont.delta
+> >~~~
+> >{: .bash}
+> >![Flye hifi vs. reference genome](../fig/ref_flye_ont.png)
 > {: .solution}
 > Now discuss:
 > 
@@ -68,23 +89,15 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > 3. Which sequencing platform do you prefer?
 {: .challenge}
 
-
-> ## Comparison of assemblies
-> In our case we have data from three different platforms. In this exercise you will compare each of the assemblies to the others. In theory these assemblies should match perfectly, as they are from the same samples. However, the number of contigs in each of the assemblies already showed that this is not the case. How do the contigs compare on a nucleotide level?
-> > ## PacBio vs. Nanopore
-> >~~~
-> >./tools/mummer-4.0.0beta2/nucmer --nosimplify --maxmatch ./results/canu_pacbio/canu_pacbio.contigs.fasta ./results/canu_nanopore/canu_nanopore.contigs.fasta --delta=./results/mummer/pacbio_nanopore.delta
-> >./tools/mummer-4.0.0beta2/mummerplot  --color --medium --layout -R ./results/canu_pacbio/canu_pacbio.contigs.fasta -Q ./results/canu_nanopore/canu_nanopore.contigs.fasta --prefix ./results/mummer/pacbio_nanopore --fat --png ./results/mummer/pacbio_nanopore.delta
+> ## Flye ONT assembly
+> There seems to something wrong with the Flye ONT assembly. Although the length of the largest contigs are similar to those of the hifiasm hifi assembly, the mummerplot does not show any similarity to the reference genome. To investigate this further, make mummerplots of:
+> 1. The hifiasm hifi primary filtered assembly against the flye ont filtered assembly
+> 2. The reference genomic region against the unfiltered flye ont assembly
+> Inspect the results. What are you observations?
+> > ## hifiasm hifi primary filtered assembly against the flye ont filtered assembly > >~~~
 > >~~~
 > >{: .bash}
-> >![PacBio vs. Nanopore](../fig/pacbio_nanopore.png)
 > {: .solution}
-{: .challenge}
-
-
-## Putting it all together
-In the previous session and in this session we collected information about the raw data and the de novo assemblies.
-> ## Best assembly
-> Given all the evidence, please indicate which assembly would you prefer and why? Most importantly, indicate which trade-off did you make in selecting (number of contigs, repeat content, basecalling quality, quality of the reads, etc).
 {: .challenge} 
+ 
 
