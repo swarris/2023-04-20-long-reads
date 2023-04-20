@@ -239,37 +239,3 @@ Hifiasm generates a .gfa file, which can be converted into a fasta file using, f
 > Discuss the results and make a comparison of the assemblies. Do the results match your expectations? Which one do you prefer and why?
 {: .challenge}
 
-> ## Quast
-> The generated assemblies appear to be much larger than expected. We will investigate this further. A key tool in comparing assembly statistics is the tool quast.py.
-> Quast outputs many different statistics, like N50, maximum contig length, GC percentage, A50 plot, etc in pdf, text and html formats. Run quast on your assemblies and inspect the results.
-> > ## Solution
-> >~~~
-> > {{site.vm_prompt}}cd ~
-> > {{site.vm_prompt}}mkdir quast
-> > {{site.vm_prompt}}cd quast
-> > {{site.vm_prompt}}quast.py -o all_raw_assemblies -t 6 ~/data/results/hifiasm_hifi/hifiasm_hifi.p_ctg.fa ~/data/results/hifiasm_hifi_sub/hifiasm_hifi_sub.p_ctg.fa ~/data/results/hifiasm_hifi_ont/hifiasm_hifi_ont.p_ctg.fa ~/data/results/flye_hifi_sub/flye_hifi_sub.fasta  ~/data/results/flye_hifi/flye_hifi.fasta ~/data/results/flye_ont_sub/flye_ont_sub.fasta ~/data/results/flye_ont/flye_ont.fasta
-> >~~~
-> >{: .bash}
-> {: .solution}
-> Please discuss the following items:
-> 1. Given the statistics, which assembly do you prefer?
-> 2. What does the GC-plot show and why is this plot relevant?
-> 3. Check out the icarus view. What would be a nice length to filter the contigs on to remove the noise and keep the ~1.5mb region?
-{: .challenge}
-> ## Filtering the assembly
-> We can use seqtk to filter the assemblies based on sequence length N:
->~~~
-> {{site.vm_prompt}}seqtk seq -L 100000 assembly.fasta > assembly_filtered.fasta
->~~~
->{: .bash}
-> Use the length(s) you determined in the previous section to filter the assemblies and run quast on these files to see the effect of this filtering.
-> > ## Solution
-> > Use for the assemblies based on the full read set a length of 500000 and for the assemblies based on the subsampled read sets a length of 200000.
-> > ~~~
-> > {{site.vm_prompt}}quast.py -o all_filtered_assemblies -t 6 ~/data/results/hifiasm_hifi/hifiasm_hifi_p.fa ~/data/results/hifiasm_hifi_sub/hifiasm_hifi_sub_p.fa ~/data/results/hifiasm_hifi_ont/hifiasm_hifi_ont_p.fa ~/data/results/flye_hifi_sub/flye_hifi_sub_p.fasta  ~/data/results/flye_hifi/flye_hifi_p.fasta ~/data/results/flye_ont_sub/flye_ont_sub_p.fasta ~/data/results/flye_ont/flye_ont_p.fasta
-> > ~~~
-> >{: .bash}
-> {: .solution}
-> Are you satisfied with the results?
-{: .challenge}
- 
