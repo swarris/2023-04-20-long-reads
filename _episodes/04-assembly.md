@@ -46,10 +46,10 @@ Creating a de novo assembly is one of the most compute intensive tasks in bioinf
 > What are the correct settings for each of the assemblies? 
 > > ## Solution
 > > ~~~
-> > {{site.vm_prompt}}flye --pacbio-hifi -f0 ~/data/reads/hifi_reads.fastq -t 6 --out-dir  flye_hifi
-> > {{site.vm_prompt}}flye --pacbio-hifi -f0 ~/data/reads/hifi_sub.reads.fastq -t 6 --out-dir  flye_hifi_sub
-> > {{site.vm_prompt}}flye --nano-hq -f0 ~/data/reads/ont_reads.fastq -t 6 --out-dir  flye_ont 
-> > {{site.vm_prompt}}flye --nano-hq -f0 ~/data/reads/ont_sub.reads.fastq -t 6 --out-dir  flye_ont_sub
+> > {{site.vm_prompt}}flye -f0 --pacbio-hifi ~/data/reads/hifi_reads.fastq -t 6 --out-dir  flye_hifi
+> > {{site.vm_prompt}}flye -f0 --pacbio-hifi ~/data/reads/hifi_sub.reads.fastq -t 6 --out-dir  flye_hifi_sub
+> > {{site.vm_prompt}}flye -f0 --nano-hq ~/data/reads/ont_reads.fastq -t 6 --out-dir  flye_ont 
+> > {{site.vm_prompt}}flye -f0 --nano-hq ~/data/reads/ont_sub.reads.fastq -t 6 --out-dir  flye_ont_sub
 > > ~~~
 > {: .solution}
 > The output folder contains a log file which shows progress, but is also very handy for inspection when everything is done. 
