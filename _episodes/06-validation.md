@@ -31,15 +31,16 @@ During this session we will map the reads back to the assemblies to validate the
 >
 > > ## ONT reads on Flye ONT assembly
 > > ~~~
-> > {{site.vm_prompt}}minimap2 -a -o ~/data/results/flye_ont.sam -t 3 -x map-ont --secondary=no ~/data/results/flye_ont/flye_ont_p.fasta /home/bioinf/data/reads/ont_subsample.reads.fastq
+> > {{site.vm_prompt}}minimap2 -a -o ~/data/results/minimap2/flye_ont.sam -t 3 -x map-ont --secondary=no ~/data/results/flye_ont/flye_ont_p.fasta /home/bioinf/data/reads/ont_subsample.reads.fastq
 > >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/flye_ont.sam > ~/data/results/flye_ont_filtered.sam
 > > ~~~
 > > {: .bash}
+> {: .solution}
 >
 > > ## Pacbio reads on Hifiasm hifi assembly
 > > ~~~
-> > {{site.vm_prompt}}minimap2 -a -o hifiasm_hifi.sam -t 3 -x map-hifi --secondary=no ../hifiasm_hifi/hifiasm_hifi_p.fa /home/bioinf/data/reads/hifi_subsample.reads.fastq 
-> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/hifiasm_hifi.sam > ~/data/results/hifiasm_hifi_filtered.sam
+> > {{site.vm_prompt}}minimap2 -a -o  ~/data/results/minimap2/hifiasm_hifi.sam -t 3 -x map-hifi --secondary=no ../hifiasm_hifi/hifiasm_hifi_p.fa /home/bioinf/data/reads/hifi_subsample.reads.fastq 
+> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/minimap2/hifiasm_hifi.sam > ~/data/results/hifiasm_hifi_filtered.sam
 > > ~~~
 > > {: .bash}
 > {: .solution}
@@ -62,25 +63,19 @@ During this session we will map the reads back to the assemblies to validate the
 > 1. The number of mismatches, insertions and deletions (Tablet supports different **Color schemes** to help with this).
 > 2. Coverage across the region
 > 
-> Discuss the differences between the three results. What type of errors do you see? How many of them?
+> Discuss the differences between the two results. What type of errors do you see? How many of them?
 {: .challenge}
 
-> ## Mapping reads to the other assemblies
-> Use minimap2 to map the read sets to each of the other assemblies. 
-> > ## Solution PacBio reads
+> ## Mapping ONT reads to the Flye ONT raw assembly
+> As a bonus, you could use minimap2 to map the ont read set to Flye nano-raw assembly. Do you spot the difference?
+>   
+> > ## Solution
 > > ~~~
-> > ~~~
-> > {: .bash}
-> {: .solution}
-> > ## Solution Nanopore reads
-> > ~~~
+> > {{site.vm_prompt}}minimap2 -a -o ~/data/results/minimap2/flye_ont_raw.sam -t 3 -x map-ont --secondary=no ~/data/results/flye_ont_raw/flye_ont_raw.fasta /home/bioinf/data/reads/ont_subsample.reads.fastq
+> >  {{site.vm_prompt}}grep -v "[0-9]\{2,\}S" ~/data/results/minimap2/flye_ont_raw.sam > ~/data/results/minimap2/flye_ont_raw_filtered.sam
 > > ~~~
 > > {: .bash}
 > {: .solution}
-> Visualize the results again in Tablet. 
-> 
-> 1. Do these mappings match you expectations?
-> 2. Which mapping(s) is/are the most informative?
 {: .challenge}
 
 
