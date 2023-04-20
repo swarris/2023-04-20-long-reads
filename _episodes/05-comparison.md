@@ -101,7 +101,7 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont/flye_ont.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont --fat --png ref_flye_ont.delta
 > >~~~
 > >{: .bash}
-> >![Flye hifi vs. reference genome](../fig/ref_flye_ont.png)
+> >![Flye ont vs. reference genome](../fig/ref_flye_ont.png)
 > {: .solution}
 > It could be that the supplied data is raw nanopore data (normal base-calling), and not high-quality nanopore data. The latter takes significantly more time to generate and is therefore less common. Investigate this by:
 > 1. Creating a Flye assembly using the --nano-raw in stead of the --nano-hq option
@@ -111,9 +111,10 @@ The first step is to align two fasta files using **nucmer**. Based on these alig
 > > The assembly is also [available for download](https://www.dropbox.com/s/fil3vgc0lhcmtl2/flye_ont_raw.fa?dl=0). 
 > > ~~~
 > > {{site.vm_prompt}}nucmer ~/data/genome/kiwi_contig.fa ../flye_ont_raw/flye_ont_raw.fa --delta=ref_flye_ont_raw.delta
-> > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont_raw/flye_ont_raw.fasta -R ../hifiasm_hifi/hifiasm_hifi_p.fa --prefix hifiasm_hifi_flye_ont_raw --fat --png hifiasm_hifi_flye_ont_raw.delta
+> > {{site.vm_prompt}}mummerplot --color --medium --filter --layout -Q ../flye_ont_raw/flye_ont_raw.fasta -R ~/data/genome/kiwi_contig.fa --prefix ref_flye_ont_raw --fat --png ref_flye_ont_raw.delta
 > > ~~~
 > > {: .bash}
+> > [Flye ont raw vs. reference genome](../fig/ref_flye_ont_raw.png)
 > {: .solution}
 > Does this indeed improve the assembly? 
 {: .challenge} 
