@@ -32,7 +32,7 @@ apps:
 > Please discuss the following items:
 > 1. Given the statistics, which assembly do you prefer?
 > 2. What does the GC-plot show and why is this plot relevant?
-> 3. Check out the icarus view. What would be a nice length to filter the contigs on to remove the noise and keep the ~1.5mb region?
+> 3. Check out the icarus view. What would be a nice length to filter the contigs on to remove the noise and keep the ~2.5mb region?
 {: .challenge}
 > ## Filtering the assembly
 > We can use seqtk to filter the assemblies based on sequence length N:
